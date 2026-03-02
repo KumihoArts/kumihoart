@@ -3,29 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kumiho — Game Music Composer</title>
+  <title>Kumiho - Game Music Composer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #080a0f;
-      --bg2:       #0d1018;
-      --surface:   #111520;
-      --border:    rgba(29,196,146,0.18);
-      --gold:      #1dc492;
-      --gold-dim:  #138a65;
-      --gold-glow: rgba(29,196,146,0.12);
-      --text:      #d4cfc6;
-      --text-dim:  #7a7570;
-      --red:       #8b2020;
-      --red-bright:#c03030;
+      --bg: #080a0f;
+      --bg2: #0d1018;
+      --surface: #111520;
+      --border: rgba(29,196,146,0.18);
+      --green: #1dc492;
+      --green-dim: #138a65;
+      --green-glow: rgba(29,196,146,0.12);
+      --text: #d4cfc6;
+      --text-dim: #7a7570;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -34,21 +29,9 @@
       font-size: 15px;
       line-height: 1.7;
       overflow-x: hidden;
-      cursor: default;
     }
 
-    /* ── Noise grain overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.6;
-    }
-
-    /* ── Nav ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -57,123 +40,72 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.2rem 4rem;
-      background: linear-gradient(180deg, rgba(8,10,15,0.97) 0%, transparent 100%);
+      background: rgba(8,10,15,0.97);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(8px);
     }
-
     .nav-logo {
       font-family: 'Space Mono', monospace;
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      color: var(--gold);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--green);
       text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
-      font-family: 'Source Code Pro', monospace;
       font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
       text-decoration: none;
       transition: color 0.3s;
     }
+    .nav-links a:hover { color: var(--green); }
 
-    .nav-links a:hover { color: var(--gold); }
-
-    /* ── Hero ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
       text-align: center;
-      overflow: hidden;
       padding: 8rem 2rem 4rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(29,196,146,0.07) 0%, transparent 70%);
     }
-
-    /* Radial atmospheric glow */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 50% 60%, rgba(29,196,146,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(29,196,146,0.05) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* Horizontal rule lines */
-    #hero::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      bottom: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-    }
-
     .hero-eyebrow {
-      font-family: 'Source Code Pro', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold-dim);
+      color: var(--green-dim);
       margin-bottom: 1.8rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.2s forwards;
     }
-
     .hero-title {
       font-family: 'Space Mono', monospace;
       font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.05em;
-      line-height: 0.95;
+      line-height: 1;
       color: #fff;
       text-shadow: 0 0 80px rgba(29,196,146,0.2), 0 2px 40px rgba(0,0,0,0.8);
-      opacity: 0;
-      animation: fadeUp 1s 0.4s forwards;
-      position: relative;
     }
-
-    .hero-title span {
-      color: var(--gold);
-    }
-
+    .hero-title span { color: var(--green); }
     .hero-subtitle {
-      font-family: 'Source Code Pro', monospace;
-      font-style: normal;
       font-size: clamp(0.8rem, 1.8vw, 1rem);
-      font-weight: 300;
       color: var(--text-dim);
       margin-top: 1.5rem;
       letter-spacing: 0.05em;
-      opacity: 0;
-      animation: fadeUp 1s 0.6s forwards;
     }
-
     .hero-cta {
       margin-top: 3.5rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      opacity: 0;
-      animation: fadeUp 1s 0.9s forwards;
     }
 
+    /* BUTTONS */
     .btn {
       display: inline-block;
       padding: 0.75rem 2.2rem;
@@ -183,394 +115,103 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
-      border: 1px solid var(--gold-dim);
-      color: var(--gold);
+      border: 1px solid var(--green-dim);
+      color: var(--green);
       background: transparent;
       transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
     }
+    .btn:hover { border-color: var(--green); color: #fff; background: var(--green-glow); }
+    .btn-solid { background: var(--green); color: var(--bg); border-color: var(--green); font-weight: 400; }
+    .btn-solid:hover { background: #25e0a8; border-color: #25e0a8; color: var(--bg); }
 
-    .btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold-glow);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .btn:hover::before { transform: scaleX(1); }
-    .btn:hover { border-color: var(--gold); color: #fff; }
-
-    .btn-solid {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-      font-weight: 400;
-    }
-
-    .btn-solid::before { background: rgba(255,255,255,0.15); }
-    .btn-solid:hover { color: var(--bg); }
-
-    /* ── Decorative separator ── */
-    .sep {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      margin: 0 auto;
-      max-width: 200px;
-    }
-    .sep::before, .sep::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-    .sep-diamond {
-      width: 6px; height: 6px;
-      background: var(--gold-dim);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 7rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    /* SECTIONS */
+    section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
     .section-label {
-      font-family: 'Source Code Pro', monospace;
       font-size: 0.62rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold-dim);
+      color: var(--green-dim);
       margin-bottom: 0.6rem;
     }
-
     .section-title {
       font-family: 'Space Mono', monospace;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 600;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
       color: #fff;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       margin-bottom: 2rem;
     }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--gold);
-      font-family: 'Source Code Pro', monospace;
-      font-weight: 300;
-      font-size: 1.2em;
+    .section-title em { color: var(--green); font-style: normal; }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
     }
 
-    /* ── About ── */
+    /* ABOUT */
     #about {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: center;
-      border-top: 1px solid var(--border);
     }
-
-    .about-text p {
-      color: var(--text);
-      line-height: 1.9;
-      margin-bottom: 1.2rem;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
+    .about-text p { color: var(--text); line-height: 1.9; margin-bottom: 1.2rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .stat-card {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-top: 2px solid var(--green-dim);
       padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
     }
+    .stat-number { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.4rem; }
 
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold-dim), transparent);
-    }
-
-    .stat-number {
-      font-family: 'Space Mono', monospace;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-top: 0.4rem;
-    }
-
-    /* ── Portfolio ── */
-    #portfolio {
-      border-top: 1px solid var(--border);
-    }
-
-    .portfolio-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .track-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
+    /* PORTFOLIO */
+    .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+    .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .track-card {
       background: var(--surface);
       border: 1px solid var(--border);
       overflow: hidden;
       transition: border-color 0.3s, transform 0.3s;
-      position: relative;
     }
+    .track-card:hover { border-color: var(--green-dim); transform: translateY(-3px); }
+    .track-embed iframe { display: block; width: 100%; border: none; }
+    .track-info { padding: 1rem 1.2rem 1.2rem; }
+    .track-name { font-family: 'Space Mono', monospace; font-size: 0.9rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+    .track-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.6; }
 
-    .track-card:hover {
-      border-color: var(--gold-dim);
-      transform: translateY(-3px);
-    }
-
-    .track-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at top left, var(--gold-glow), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-
-    .track-card:hover::before { opacity: 1; }
-
-    .track-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #0d1018 0%, #1a1020 50%, #0a0d14 100%);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .track-thumb-pattern {
-      position: absolute;
-      inset: 0;
-      opacity: 0.4;
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(29,196,146,0.06) 40px, rgba(29,196,146,0.06) 41px),
-        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(29,196,146,0.06) 40px, rgba(29,196,146,0.06) 41px);
-    }
-
-    .track-tag {
-      position: absolute;
-      top: 0.8rem; right: 0.8rem;
-      background: rgba(8,10,15,0.85);
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.7rem;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-    }
-
-    .track-icon {
-      font-size: 2.5rem;
-      opacity: 0.3;
-      color: var(--gold);
-    }
-
-    .track-embed {
-      padding: 1rem 1.2rem 0;
-    }
-
-    .track-embed iframe {
-      width: 100%;
-      border-radius: 0;
-      border: none;
-    }
-
-    .track-info {
-      padding: 1.2rem 1.4rem 1.4rem;
-    }
-
-    .track-name {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.3rem;
-    }
-
-    .track-desc {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-
-    /* ── Services ── */
-    #services {
-      border-top: 1px solid var(--border);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
-      margin-top: 3rem;
-    }
-
-    .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      position: relative;
-      transition: border-color 0.3s;
-    }
-
-    .service-card:hover { border-color: var(--gold-dim); }
-
-    .service-card.featured {
-      border-color: var(--gold-dim);
-      grid-column: span 2;
-    }
-
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+    .service-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; position: relative; transition: border-color 0.3s; }
+    .service-card:hover { border-color: var(--green-dim); }
+    .service-card.featured { border-color: var(--green-dim); grid-column: span 2; }
     .service-card.featured::before {
       content: 'MOST POPULAR';
       position: absolute;
       top: -1px; right: 2rem;
-      background: var(--gold);
+      background: var(--green);
       color: var(--bg);
       font-size: 0.55rem;
       letter-spacing: 0.2em;
       padding: 0.2rem 0.8rem;
-      font-weight: 400;
     }
+    .service-name { font-family: 'Space Mono', monospace; font-size: 0.95rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .service-price { font-size: 1.8rem; font-weight: 300; color: var(--green); margin-bottom: 1rem; line-height: 1; }
+    .service-price span { font-size: 0.85rem; color: var(--text-dim); }
+    .service-features { list-style: none; margin-bottom: 1.5rem; }
+    .service-features li { font-size: 0.8rem; color: var(--text-dim); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 0.6rem; }
+    .service-features li::before { content: '>'; color: var(--green-dim); flex-shrink: 0; }
+    .service-note { font-size: 0.72rem; color: var(--text-dim); font-style: italic; margin-top: 1rem; }
 
-    .service-name {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-
-    .service-price {
-      font-family: 'Source Code Pro', monospace;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      line-height: 1;
-    }
-
-    .service-price span {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      font-family: 'Source Code Pro', monospace;
-    }
-
-    .service-features {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-features li {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      padding: 0.4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .service-features li::before {
-      content: '◆';
-      color: var(--gold-dim);
-      font-size: 0.4rem;
-      flex-shrink: 0;
-    }
-
-    .service-note {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      font-style: italic;
-      margin-top: 1rem;
-    }
-
-    /* ── Contact ── */
-    #contact {
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    #contact .section-title { margin-bottom: 0.5rem; }
-
-    .contact-sub {
-      font-family: 'Source Code Pro', monospace;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--text-dim);
-      margin-bottom: 3rem;
-    }
-
-    .contact-form {
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      font-size: 0.63rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 0.5rem;
-    }
-
+    /* CONTACT */
+    #contact { text-align: center; }
+    .contact-sub { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 3rem; }
+    .contact-form { max-width: 560px; margin: 0 auto; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.5rem; }
     .form-group input,
     .form-group textarea,
     .form-group select {
@@ -584,31 +225,15 @@
       outline: none;
       transition: border-color 0.3s;
       appearance: none;
-      -webkit-appearance: none;
     }
-
     .form-group input:focus,
     .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--gold-dim);
-    }
+    .form-group select:focus { border-color: var(--green-dim); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--bg2); }
+    .form-submit { width: 100%; padding: 0.9rem; margin-top: 0.5rem; }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-group select option {
-      background: var(--bg2);
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    /* ── Footer ── */
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 4rem;
@@ -618,85 +243,25 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+    .footer-logo { font-family: 'Space Mono', monospace; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: var(--green-dim); }
+    .footer-copy { font-size: 0.7rem; color: var(--text-dim); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--green); }
 
-    .footer-logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      color: var(--gold-dim);
-    }
-
-    .footer-copy {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.08em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-links a {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 1;
-      transform: none;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(20px); }
-    }
-
-    /* ── Responsive ── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-
-      #about {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .about-stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .service-card.featured {
-        grid-column: span 1;
-      }
-
-      footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1.5rem;
-      }
-
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .service-card.featured { grid-column: span 1; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">KUMIHO</a>
     <ul class="nav-links">
@@ -707,68 +272,61 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div id="hero">
     <p class="hero-eyebrow">Game Music Composer &amp; Sound Designer</p>
     <h1 class="hero-title">KU<span>MI</span>HO</h1>
-    <p class="hero-subtitle">Crafting worlds through sound — one score at a time.</p>
+    <p class="hero-subtitle">Crafting worlds through sound &mdash; one score at a time.</p>
     <div class="hero-cta">
       <a href="#portfolio" class="btn">Hear My Work</a>
       <a href="#contact" class="btn btn-solid">Commission a Track</a>
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <hr class="section-divider" />
+
   <section id="about">
-    <div class="about-text reveal">
+    <div class="about-text">
       <p class="section-label">About</p>
       <h2 class="section-title">Music That <em>Breathes</em> Life Into Your Game</h2>
-      <p>
-        I'm Kumiho — a game music composer specialising in atmospheric, emotionally-driven scores for indie games, visual novels, and interactive experiences. My sound draws from cinematic orchestration, dark ambience, and folklore-infused tonality.
-      </p>
-      <p>
-        Whether you need a haunting dungeon theme, an epic boss encounter, or an intimate character moment, I craft music that pulls players deeper into your world.
-      </p>
-      <p>
-        Currently available for commissions. Let's build something unforgettable together.
-      </p>
-      <br/>
-      <a href="#contact" class="btn" style="display:inline-block; margin-top: 0.5rem;">Get In Touch →</a>
+      <p>I'm Kumiho &mdash; a game music composer specialising in atmospheric, emotionally-driven scores for indie games, visual novels, and interactive experiences. My sound draws from cinematic orchestration, dark ambience, and folklore-infused tonality.</p>
+      <p>Whether you need a haunting dungeon theme, an epic boss encounter, or an intimate character moment, I craft music that pulls players deeper into your world.</p>
+      <p>Currently available for commissions. Let's build something unforgettable together.</p>
+      <br>
+      <a href="#contact" class="btn">Get In Touch</a>
     </div>
-    <div class="about-stats reveal" style="transition-delay: 0.15s;">
+    <div class="about-stats">
       <div class="stat-card">
         <div class="stat-number">20+</div>
         <div class="stat-label">Tracks Composed</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Passion for Games</div>
-      </div>
-      <div class="stat-card">
         <div class="stat-number">FL</div>
-        <div class="stat-label">Studio / DAW</div>
+        <div class="stat-label">Studio DAW</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">100%</div>
         <div class="stat-label">Original Scores</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-number">VN</div>
+        <div class="stat-label">Speciality</div>
+      </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
+  <hr class="section-divider" />
+
   <section id="portfolio">
-    <div class="portfolio-header reveal">
+    <div class="portfolio-header">
       <div>
         <p class="section-label">Portfolio</p>
         <h2 class="section-title" style="margin-bottom:0;">Selected <em>Works</em></h2>
       </div>
-      <a href="https://soundcloud.com/kumihoart" target="_blank" class="btn">All Tracks on SoundCloud ↗</a>
+      <a href="https://soundcloud.com/kumihoart" target="_blank" class="btn">All Tracks on SoundCloud</a>
     </div>
-
     <div class="track-grid">
 
-      <!-- Track 1: Forest -->
-      <div class="track-card reveal">
+      <div class="track-card">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276451824&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -778,8 +336,7 @@
         </div>
       </div>
 
-      <!-- Track 2: Bella -->
-      <div class="track-card reveal" style="transition-delay:0.1s">
+      <div class="track-card">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276451335&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -789,8 +346,7 @@
         </div>
       </div>
 
-      <!-- Track 3: Godshard -->
-      <div class="track-card reveal" style="transition-delay:0.2s">
+      <div class="track-card">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276447624&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -800,8 +356,7 @@
         </div>
       </div>
 
-      <!-- Track 4: Trails -->
-      <div class="track-card reveal" style="transition-delay:0.3s">
+      <div class="track-card">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276383046&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -814,18 +369,16 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="reveal">
-      <p class="section-label">Services &amp; Pricing</p>
-      <h2 class="section-title">What I <em>Offer</em></h2>
-    </div>
+  <hr class="section-divider" />
 
+  <section id="services">
+    <p class="section-label">Services &amp; Pricing</p>
+    <h2 class="section-title">What I <em>Offer</em></h2>
     <div class="services-grid">
 
-      <div class="service-card reveal">
+      <div class="service-card">
         <div class="service-name">Single Track</div>
-        <div class="service-price">€XX <span>/ track</span></div>
+        <div class="service-price">EUR XX <span>/ track</span></div>
         <ul class="service-features">
           <li>1 original composition</li>
           <li>Up to 3 minutes</li>
@@ -833,52 +386,48 @@
           <li>2 revision rounds</li>
           <li>Commercial license</li>
         </ul>
-        <a href="#contact" class="btn" style="display:block; text-align:center;">Request →</a>
+        <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
       </div>
 
-      <div class="service-card featured reveal" style="transition-delay:0.1s">
+      <div class="service-card featured">
         <div class="service-name">Full Soundtrack Pack</div>
-        <div class="service-price">€XX <span>/ project</span></div>
+        <div class="service-price">EUR XX <span>/ project</span></div>
         <ul class="service-features">
-          <li>5–15 original tracks</li>
+          <li>5-15 original tracks</li>
           <li>Loopable versions included</li>
           <li>WAV + MP3 delivery</li>
           <li>Unlimited revisions</li>
           <li>Full commercial license</li>
           <li>Priority turnaround</li>
         </ul>
-        <a href="#contact" class="btn btn-solid" style="display:block; text-align:center;">Request →</a>
+        <a href="#contact" class="btn btn-solid" style="display:block; text-align:center;">Request</a>
         <p class="service-note">Ideal for visual novels, indie games, or game jams needing a cohesive score.</p>
       </div>
 
-      <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="service-card">
         <div class="service-name">Ambient / Loop Pack</div>
-        <div class="service-price">€XX <span>/ pack</span></div>
+        <div class="service-price">EUR XX <span>/ pack</span></div>
         <ul class="service-features">
-          <li>3–5 seamless loop tracks</li>
+          <li>3-5 seamless loop tracks</li>
           <li>Dungeon, town, or area themes</li>
           <li>WAV + MP3 delivery</li>
           <li>2 revision rounds</li>
           <li>Commercial license</li>
         </ul>
-        <a href="#contact" class="btn" style="display:block; text-align:center;">Request →</a>
+        <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
       </div>
 
     </div>
-    <p class="reveal" style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim); font-style: italic;">
-      * Prices are placeholders — update them to reflect your rates. Custom quotes available for larger projects.
-    </p>
+    <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim); font-style: italic;">* Prices are placeholders. Custom quotes available for larger projects.</p>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="reveal">
-      <p class="section-label">Commission</p>
-      <h2 class="section-title">Let's Make <em>Something</em></h2>
-      <p class="contact-sub">Describe your project and I'll get back to you within 48 hours.</p>
-    </div>
+  <hr class="section-divider" />
 
-    <form class="contact-form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <section id="contact">
+    <p class="section-label">Commission</p>
+    <h2 class="section-title">Let's Make <em>Something</em></h2>
+    <p class="contact-sub">Describe your project and I'll get back to you within 48 hours.</p>
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -905,16 +454,14 @@
       </div>
       <button type="submit" class="btn btn-solid form-submit">Send Commission Request</button>
     </form>
-
-    <p class="reveal" style="margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-dim);">
-      Prefer email? Reach me directly at <a href="mailto:your@email.com" style="color: var(--gold-dim);">your@email.com</a>
+    <p style="margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-dim);">
+      Prefer email? Reach me at <a href="mailto:your@email.com" style="color: var(--green-dim);">your@email.com</a>
     </p>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">KUMIHO</div>
-    <div class="footer-copy">© 2026 Kumiho. All rights reserved.</div>
+    <div class="footer-copy">2026 Kumiho. All rights reserved.</div>
     <div class="footer-links">
       <a href="https://soundcloud.com/kumihoart" target="_blank">SoundCloud</a>
       <a href="#contact">Commission</a>
