@@ -651,9 +651,8 @@
 
     /* ── Scroll reveal ── */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 1;
+      transform: none;
     }
 
     .reveal.visible {
@@ -908,7 +907,7 @@
     </form>
 
     <p class="reveal" style="margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-dim);">
-      Prefer email? Reach me directly at <a href="/cdn-cgi/l/email-protection#add4c2d8dfedc8c0ccc4c183cec2c0" style="color: var(--gold-dim);"><span class="__cf_email__" data-cfemail="dfa6b0aaad9fbab2beb6b3f1bcb0b2">[email&#160;protected]</span></a>
+      Prefer email? Reach me directly at <a href="mailto:your@email.com" style="color: var(--gold-dim);">your@email.com</a>
     </p>
   </section>
 
@@ -922,9 +921,5 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if
+</body>
+</html>
