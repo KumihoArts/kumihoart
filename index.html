@@ -45,12 +45,13 @@
       backdrop-filter: blur(8px);
     }
     .nav-logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--green);
+      display: flex;
+      align-items: center;
       text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 42px;
+      width: auto;
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -73,6 +74,18 @@
       text-align: center;
       padding: 8rem 2rem 4rem;
       background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(29,196,146,0.07) 0%, transparent 70%);
+    }
+    .hero-logo {
+      width: clamp(120px, 20vw, 180px);
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 30px rgba(29,196,146,0.25));
+    }
+    .js-loaded .hero-logo {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0s;
     }
     .hero-eyebrow {
       font-size: 0.65rem;
@@ -340,7 +353,9 @@
 <body>
 
   <nav>
-    <a href="#hero" class="nav-logo">KUMIHO</a>
+    <a href="#hero" class="nav-logo">
+      <img src="KumihoVectorDark.png" alt="Kumiho" class="nav-logo-img" />
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
@@ -350,6 +365,7 @@
   </nav>
 
   <div id="hero">
+    <img src="KumihoVector.png" alt="Kumiho Logo" class="hero-logo" />
     <p class="hero-eyebrow">Game Music Composer &amp; Sound Designer</p>
     <h1 class="hero-title">KU<span>MI</span>HO</h1>
     <p class="hero-subtitle">Crafting worlds through sound &mdash; one score at a time.</p>
@@ -532,23 +548,22 @@
       <button type="submit" class="btn btn-solid form-submit">Send Commission Request</button>
     </form>
     <p style="margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-dim);">
-      Prefer email? Reach me at <a href="mailto:your@email.com" style="color: var(--green-dim);">your@email.com</a>
+      Prefer email? Reach me at <a href="/cdn-cgi/l/email-protection#c5bcaab0b785a0a8a4aca9eba6aaa8" style="color: var(--green-dim);"><span class="__cf_email__" data-cfemail="d4adbba1a694b1b9b5bdb8fab7bbb9">[email&#160;protected]</span></a>
     </p>
   </section>
 
   <footer>
-    <div class="footer-logo">KUMIHO</div>
+    <img src="KumihoVectorDark.png" alt="Kumiho" style="height:36px; width:auto;" />
     <div class="footer-copy">2026 Kumiho. All rights reserved.</div>
     <div class="footer-links">
       <a href="https://soundcloud.com/kumihoart" target="_blank">SoundCloud</a>
       <a href="#contact">Commission</a>
     </div>
   </footer>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  </footer>
   <script>
-    // Mark document as JS-enabled (enables animations safely)
     document.documentElement.classList.add('js-loaded');
-
-    // Scroll reveal
     var reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function(entries) {
@@ -561,7 +576,6 @@
       }, { threshold: 0.08 });
       reveals.forEach(function(el) { observer.observe(el); });
     } else {
-      // Fallback: just show everything
       reveals.forEach(function(el) { el.classList.add('visible'); });
     }
   </script>
