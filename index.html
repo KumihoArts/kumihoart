@@ -249,6 +249,83 @@
     .footer-links a { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
     .footer-links a:hover { color: var(--green); }
 
+    /* ANIMATIONS - only active when JS has loaded */
+
+    /* Hero fade-in */
+    .js-loaded .hero-eyebrow,
+    .js-loaded .hero-title,
+    .js-loaded .hero-subtitle,
+    .js-loaded .hero-cta {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .js-loaded .hero-eyebrow { animation-delay: 0.1s; }
+    .js-loaded .hero-title    { animation-delay: 0.3s; }
+    .js-loaded .hero-subtitle { animation-delay: 0.55s; }
+    .js-loaded .hero-cta      { animation-delay: 0.75s; }
+
+    @keyframes fadeUp {
+      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+
+    /* Scroll reveal */
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Hover effects on cards */
+    .track-card {
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .track-card:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(29,196,146,0.08);
+    }
+    .service-card {
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-3px);
+    }
+
+    /* Smooth section transitions - highlight border on scroll into view */
+    .stat-card {
+      transition: border-top-color 0.4s;
+    }
+    .stat-card:hover {
+      border-top-color: var(--green);
+    }
+
+    /* Button hover polish */
+    .btn {
+      transition: all 0.25s ease;
+    }
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
@@ -285,7 +362,7 @@
   <hr class="section-divider" />
 
   <section id="about">
-    <div class="about-text">
+    <div class="about-text reveal">
       <p class="section-label">About</p>
       <h2 class="section-title">Music That <em>Breathes</em> Life Into Your Game</h2>
       <p>I'm Kumiho &mdash; a game music composer specialising in atmospheric, emotionally-driven scores for indie games, visual novels, and interactive experiences. My sound draws from cinematic orchestration, dark ambience, and folklore-infused tonality.</p>
@@ -294,7 +371,7 @@
       <br>
       <a href="#contact" class="btn">Get In Touch</a>
     </div>
-    <div class="about-stats">
+    <div class="about-stats reveal" style="transition-delay:0.15s">
       <div class="stat-card">
         <div class="stat-number">20+</div>
         <div class="stat-label">Tracks Composed</div>
@@ -317,7 +394,7 @@
   <hr class="section-divider" />
 
   <section id="portfolio">
-    <div class="portfolio-header">
+    <div class="portfolio-header reveal">
       <div>
         <p class="section-label">Portfolio</p>
         <h2 class="section-title" style="margin-bottom:0;">Selected <em>Works</em></h2>
@@ -326,7 +403,7 @@
     </div>
     <div class="track-grid">
 
-      <div class="track-card">
+      <div class="track-card reveal">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276451824&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -336,7 +413,7 @@
         </div>
       </div>
 
-      <div class="track-card">
+      <div class="track-card reveal">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276451335&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -346,7 +423,7 @@
         </div>
       </div>
 
-      <div class="track-card">
+      <div class="track-card reveal">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276447624&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -356,7 +433,7 @@
         </div>
       </div>
 
-      <div class="track-card">
+      <div class="track-card reveal">
         <div class="track-embed">
           <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2276383046&color=%231dc492&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         </div>
@@ -376,7 +453,7 @@
     <h2 class="section-title">What I <em>Offer</em></h2>
     <div class="services-grid">
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <div class="service-name">Single Track</div>
         <div class="service-price">EUR XX <span>/ track</span></div>
         <ul class="service-features">
@@ -389,7 +466,7 @@
         <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
       </div>
 
-      <div class="service-card featured">
+      <div class="service-card featured reveal">
         <div class="service-name">Full Soundtrack Pack</div>
         <div class="service-price">EUR XX <span>/ project</span></div>
         <ul class="service-features">
@@ -404,7 +481,7 @@
         <p class="service-note">Ideal for visual novels, indie games, or game jams needing a cohesive score.</p>
       </div>
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <div class="service-name">Ambient / Loop Pack</div>
         <div class="service-price">EUR XX <span>/ pack</span></div>
         <ul class="service-features">
@@ -467,6 +544,26 @@
       <a href="#contact">Commission</a>
     </div>
   </footer>
+  <script>
+    // Mark document as JS-enabled (enables animations safely)
+    document.documentElement.classList.add('js-loaded');
 
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      reveals.forEach(function(el) { observer.observe(el); });
+    } else {
+      // Fallback: just show everything
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+    }
+  </script>
 </body>
 </html>
