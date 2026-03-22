@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kumiho - Game Music Composer</title>
+  <title>Kumiho — Music &amp; Discord Bots</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -110,8 +110,24 @@
       letter-spacing: 0.05em;
       text-shadow: 0 1px 4px rgba(0,0,0,0.9);
     }
+    .hero-services {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-service-pill {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+    }
+    .hero-service-pill span { color: var(--green); }
     .hero-cta {
-      margin-top: 3.5rem;
+      margin-top: 3rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
@@ -174,7 +190,7 @@
     .stat-number { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; }
     .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.4rem; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
 
-    /* PORTFOLIO */
+    /* PORTFOLIO — MUSIC */
     .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
     .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .track-card {
@@ -189,8 +205,85 @@
     .track-name { font-family: 'Space Mono', monospace; font-size: 0.9rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
     .track-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
 
+    /* BOTS SECTION */
+    .bots-intro { max-width: 620px; margin-bottom: 3.5rem; }
+    .bots-intro p { color: var(--text-dim); line-height: 1.9; margin-bottom: 1rem; }
+    .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .bot-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .bot-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bot-card:hover { border-color: var(--green-dim); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(29,196,146,0.08); }
+    .bot-card:hover::before { opacity: 1; }
+    .bot-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; gap: 1rem; }
+    .bot-name { font-family: 'Space Mono', monospace; font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; }
+    .bot-tag {
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--green-dim);
+      padding: 0.2rem 0.6rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .bot-tag.live { background: var(--green); }
+    .bot-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 1.2rem; }
+    .bot-features { list-style: none; margin-bottom: 0; }
+    .bot-features li {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .bot-features li::before { content: '>'; color: var(--green-dim); flex-shrink: 0; }
+    .bot-features li:last-child { border-bottom: none; }
+
     /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+    .services-intro { max-width: 620px; margin-bottom: 0; }
+    .services-intro p { color: var(--text-dim); line-height: 1.9; margin-bottom: 1rem; }
+    .services-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 3rem;
+      margin-top: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-btn {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.7rem 2rem;
+      cursor: pointer;
+      transition: color 0.25s, border-color 0.25s;
+      margin-bottom: -1px;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
     .service-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -199,7 +292,7 @@
       transition: border-color 0.3s, transform 0.3s;
     }
     .service-card:hover { border-color: var(--green-dim); transform: translateY(-3px); }
-    .service-card.featured { border-color: var(--green-dim); grid-column: span 2; }
+    .service-card.featured { border-color: var(--green-dim); }
     .service-card.featured::before {
       content: 'MOST POPULAR';
       position: absolute;
@@ -217,6 +310,18 @@
     .service-features li { font-size: 0.8rem; color: var(--text-dim); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 0.6rem; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
     .service-features li::before { content: '>'; color: var(--green-dim); flex-shrink: 0; }
     .service-note { font-size: 0.72rem; color: var(--text-dim); font-style: italic; margin-top: 1rem; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+    .railway-note {
+      margin-top: 2rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green-dim);
+      background: var(--surface);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+    .railway-note a { color: var(--green); text-decoration: none; }
+    .railway-note a:hover { color: #fff; }
 
     /* CONTACT */
     #contact { text-align: center; }
@@ -266,6 +371,7 @@
     .js-loaded .hero-eyebrow,
     .js-loaded .hero-title,
     .js-loaded .hero-subtitle,
+    .js-loaded .hero-services,
     .js-loaded .hero-cta {
       opacity: 0;
       transform: translateY(20px);
@@ -274,7 +380,8 @@
     .js-loaded .hero-logo     { animation-delay: 0.0s; }
     .js-loaded .hero-eyebrow  { animation-delay: 0.2s; }
     .js-loaded .hero-title    { animation-delay: 0.4s; }
-    .js-loaded .hero-subtitle { animation-delay: 0.6s; }
+    .js-loaded .hero-subtitle { animation-delay: 0.55s; }
+    .js-loaded .hero-services { animation-delay: 0.65s; }
     .js-loaded .hero-cta      { animation-delay: 0.8s; }
 
     @keyframes fadeUp {
@@ -297,6 +404,7 @@
       .service-card.featured { grid-column: span 1; }
       footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
+      .services-tabs { overflow-x: auto; }
     }
   </style>
 </head>
@@ -308,7 +416,8 @@
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#portfolio">Music</a></li>
+      <li><a href="#bots">Bots</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Commission</a></li>
     </ul>
@@ -316,11 +425,17 @@
 
   <div id="hero">
     <img src="KumihoVectorTrans.png" alt="Kumiho Logo" class="hero-logo" />
-    <p class="hero-eyebrow">Game Music Composer &amp; Sound Designer</p>
+    <p class="hero-eyebrow">Game Music &middot; Discord Bots &middot; Creative Dev</p>
     <h1 class="hero-title">KU<span>MI</span>HO</h1>
-       <div class="hero-cta">
+    <p class="hero-subtitle">Atmospheric scores and custom Discord bots for indie creators.</p>
+    <div class="hero-services">
+      <div class="hero-service-pill"><span>//</span> Game Music</div>
+      <div class="hero-service-pill"><span>//</span> Discord Bots</div>
+      <div class="hero-service-pill"><span>//</span> Visual Novel Dev</div>
+    </div>
+    <div class="hero-cta">
       <a href="#portfolio" class="btn">Hear My Work</a>
-      <a href="#contact" class="btn btn-solid">Commission a Track</a>
+      <a href="#contact" class="btn btn-solid">Commission</a>
     </div>
   </div>
 
@@ -329,9 +444,9 @@
   <section id="about">
     <div class="about-text reveal">
       <p class="section-label">About</p>
-      <h2 class="section-title">Music That <em>Breathes</em> Life Into Your Game</h2>
-      <p>I'm Kumiho &mdash; a game music composer specialising in atmospheric, emotionally-driven scores for indie games, visual novels, and interactive experiences. My sound draws from cinematic orchestration and dark ambience.</p>
-      <p>Whether you need a haunting dungeon theme, an epic boss encounter, or an intimate character moment, I craft music that pulls players deeper into your world.</p>
+      <h2 class="section-title">Music &amp; Code That <em>Elevates</em> Your Project</h2>
+      <p>I'm Kumiho &mdash; a composer and developer specialising in atmospheric, emotionally-driven scores for indie games and visual novels, and custom Discord bots built for communities that want more than the off-the-shelf options.</p>
+      <p>On the music side I craft everything from haunting dungeon ambience to epic boss themes. On the bot side I build fully custom Discord bots &mdash; XP systems, moderation, webhooks, Patreon integration &mdash; deployed and documented so you can hand them off to your community with confidence.</p>
       <p>Currently available for commissions. Let's build something unforgettable together.</p>
       <br>
       <a href="#contact" class="btn">Get In Touch</a>
@@ -346,8 +461,8 @@
         <div class="stat-label">Studio DAW</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Original Scores</div>
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Bots Deployed</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">VN</div>
@@ -361,7 +476,7 @@
   <section id="portfolio">
     <div class="portfolio-header reveal">
       <div>
-        <p class="section-label">Portfolio</p>
+        <p class="section-label">Music Portfolio</p>
         <h2 class="section-title" style="margin-bottom:0;">Selected <em>Works</em></h2>
       </div>
       <a href="https://soundcloud.com/kumihoart" target="_blank" class="btn">All Tracks on SoundCloud</a>
@@ -413,54 +528,177 @@
 
   <hr class="section-divider" />
 
-  <section id="services">
-    <p class="section-label">Services &amp; Pricing</p>
-    <h2 class="section-title">What I <em>Offer</em></h2>
-    <div class="services-grid">
+  <section id="bots">
+    <p class="section-label">Discord Bots</p>
+    <h2 class="section-title">Bots Built for <em>Real</em> Communities</h2>
+    <div class="bots-intro reveal">
+      <p>I build fully custom Discord bots tailored to your community — not generic dashboard bots, but purpose-built tools with your features, your branding, and proper documentation. You own the code and host it yourself on Railway's free tier.</p>
+    </div>
+    <div class="bot-grid">
 
-      <div class="service-card reveal">
-        <div class="service-name">Single Track</div>
-        <div class="service-price">&euro;50 <span>/ track</span></div>
-        <ul class="service-features">
-          <li>1 original composition</li>
-          <li>Up to 3 minutes</li>
-          <li>WAV + OGG delivery (other formats on request)</li>
-          <li>2 revision rounds</li>
-          <li>Commercial license</li>
+      <div class="bot-card reveal">
+        <div class="bot-card-header">
+          <div class="bot-name">Asteria Bot</div>
+          <div class="bot-tag live">Live</div>
+        </div>
+        <p class="bot-desc">Full-featured community bot for the Asteria's Fall indie game server. Built from scratch with a modular cog architecture.</p>
+        <ul class="bot-features">
+          <li>XP &amp; levelling system with rank roles</li>
+          <li>Moderation suite with auto-escalation</li>
+          <li>Patreon &amp; GitHub webhook integration</li>
+          <li>Sticky messages, emoji lock, trivia</li>
+          <li>Postgres-backed, deployed on Railway</li>
         </ul>
-        <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
       </div>
 
-      <div class="service-card featured reveal" style="transition-delay:0.1s">
-        <div class="service-name">Full Soundtrack Pack</div>
-        <div class="service-price">Price on Request</div>
-        <ul class="service-features">
-          <li>5-15 original tracks</li>
-          <li>Loopable versions included</li>
-          <li>WAV + OGG delivery (other formats on request)</li>
-          <li>Unlimited revisions</li>
-          <li>Full commercial license</li>
-          <li>Priority turnaround</li>
+      <div class="bot-card reveal" style="transition-delay:0.1s">
+        <div class="bot-card-header">
+          <div class="bot-name">AniAlarm</div>
+          <div class="bot-tag live">Live</div>
+        </div>
+        <p class="bot-desc">Anime episode notification bot with AniList OAuth sync, personal watchlists, and MAL import.</p>
+        <ul class="bot-features">
+          <li>Episode release notifications</li>
+          <li>AniList OAuth &amp; MAL import</li>
+          <li>Personal lists per user</li>
+          <li>Premium tier via Discord entitlements</li>
+          <li>Vote reward system</li>
         </ul>
-        <a href="#contact" class="btn btn-solid" style="display:block; text-align:center;">Request</a>
-        <p class="service-note">Ideal for visual novels, indie games, or game jams needing a cohesive score.</p>
       </div>
 
-      <div class="service-card reveal" style="transition-delay:0.2s">
-        <div class="service-name">Ambient / Loop Pack</div>
-        <div class="service-price">Price on Request</div>
-        <ul class="service-features">
-          <li>3-5 seamless loop tracks</li>
-          <li>Dungeon, town, or area themes</li>
-          <li>WAV + OGG delivery (other formats on request)</li>
-          <li>2 revision rounds</li>
-          <li>Commercial license</li>
+      <div class="bot-card reveal" style="transition-delay:0.2s">
+        <div class="bot-card-header">
+          <div class="bot-name">CreatorAlert</div>
+          <div class="bot-tag live">Live</div>
+        </div>
+        <p class="bot-desc">Multi-platform creator notification bot for Patreon, Gumroad, and SubscribeStar — new post and product alerts delivered to Discord.</p>
+        <ul class="bot-features">
+          <li>Patreon new post notifications</li>
+          <li>Gumroad new product alerts</li>
+          <li>SubscribeStar integration</li>
+          <li>Per-creator channel routing</li>
+          <li>Deployed on Railway</li>
         </ul>
-        <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
       </div>
 
     </div>
-    <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim); font-style: italic; text-shadow: 0 1px 4px rgba(0,0,0,0.9);">* Custom quotes available for larger or bespoke projects.</p>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section id="services">
+    <p class="section-label">Services &amp; Pricing</p>
+    <h2 class="section-title">What I <em>Offer</em></h2>
+    <div class="services-intro reveal">
+      <p>Two disciplines, one commission process. Whether you need a score for your game or a bot for your community, the process is the same — describe your project, I'll quote it, and we'll build it together.</p>
+    </div>
+
+    <div class="services-tabs">
+      <button class="tab-btn active" onclick="switchTab('music', this)">🎵 Music</button>
+      <button class="tab-btn" onclick="switchTab('bots', this)">🤖 Discord Bots</button>
+    </div>
+
+    <div id="tab-music" class="tab-panel active">
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-name">Single Track</div>
+          <div class="service-price">&euro;50 <span>/ track</span></div>
+          <ul class="service-features">
+            <li>1 original composition</li>
+            <li>Up to 3 minutes</li>
+            <li>WAV + OGG delivery (other formats on request)</li>
+            <li>2 revision rounds</li>
+            <li>Commercial license</li>
+          </ul>
+          <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
+        </div>
+
+        <div class="service-card featured reveal" style="transition-delay:0.1s">
+          <div class="service-name">Full Soundtrack Pack</div>
+          <div class="service-price">Price on Request</div>
+          <ul class="service-features">
+            <li>5–15 original tracks</li>
+            <li>Loopable versions included</li>
+            <li>WAV + OGG delivery (other formats on request)</li>
+            <li>Unlimited revisions</li>
+            <li>Full commercial license</li>
+            <li>Priority turnaround</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid" style="display:block; text-align:center;">Request</a>
+          <p class="service-note">Ideal for visual novels, indie games, or game jams needing a cohesive score.</p>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-name">Ambient / Loop Pack</div>
+          <div class="service-price">Price on Request</div>
+          <ul class="service-features">
+            <li>3–5 seamless loop tracks</li>
+            <li>Dungeon, town, or area themes</li>
+            <li>WAV + OGG delivery (other formats on request)</li>
+            <li>2 revision rounds</li>
+            <li>Commercial license</li>
+          </ul>
+          <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
+        </div>
+
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim); font-style: italic; text-shadow: 0 1px 4px rgba(0,0,0,0.9);">* Custom quotes available for larger or bespoke projects.</p>
+    </div>
+
+    <div id="tab-bots" class="tab-panel">
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-name">Starter Bot</div>
+          <div class="service-price">Price on Request</div>
+          <ul class="service-features">
+            <li>Welcome messages &amp; role assignment</li>
+            <li>Basic moderation commands</li>
+            <li>Up to 5 custom slash commands</li>
+            <li>Full source code delivered</li>
+            <li>Railway deployment guide included</li>
+            <li>1 revision round</li>
+          </ul>
+          <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
+        </div>
+
+        <div class="service-card featured reveal" style="transition-delay:0.1s">
+          <div class="service-name">Custom Bot</div>
+          <div class="service-price">Price on Request</div>
+          <ul class="service-features">
+            <li>Full feature set tailored to your needs</li>
+            <li>XP systems, webhooks, integrations</li>
+            <li>Database-backed (Postgres)</li>
+            <li>Modular architecture — easy to extend</li>
+            <li>Full source code delivered</li>
+            <li>Railway deployment guide included</li>
+            <li>Unlimited revisions during build</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid" style="display:block; text-align:center;">Request</a>
+          <p class="service-note">Everything in Asteria Bot and AniAlarm was built at this tier.</p>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-name">Custom Bot + Setup</div>
+          <div class="service-price">Price on Request</div>
+          <ul class="service-features">
+            <li>Everything in Custom Bot</li>
+            <li>Assisted Railway deployment session</li>
+            <li>Environment variable walkthrough</li>
+            <li>Bot goes live together</li>
+            <li>30-day post-launch support</li>
+          </ul>
+          <a href="#contact" class="btn" style="display:block; text-align:center;">Request</a>
+        </div>
+
+      </div>
+
+      <div class="railway-note reveal" style="margin-top: 2rem;">
+        <strong style="color: var(--text);">About hosting:</strong> All bots are delivered as self-hostable code. Railway's free tier is enough for most community bots &mdash; I'll include a setup guide with every delivery. New to Railway? <a href="https://railway.app?referralCode=kumiho" target="_blank">Sign up via my referral link</a> and support the work at no extra cost to you.
+      </div>
+    </div>
+
   </section>
 
   <hr class="section-divider" />
@@ -484,15 +722,22 @@
         <label for="project-type">Project Type</label>
         <select id="project-type" name="project_type">
           <option value="">Select a service...</option>
-          <option value="single">Single Track</option>
-          <option value="soundtrack">Full Soundtrack Pack</option>
-          <option value="ambient">Ambient / Loop Pack</option>
+          <optgroup label="Music">
+            <option value="single">Single Track</option>
+            <option value="soundtrack">Full Soundtrack Pack</option>
+            <option value="ambient">Ambient / Loop Pack</option>
+          </optgroup>
+          <optgroup label="Discord Bots">
+            <option value="bot-starter">Starter Bot</option>
+            <option value="bot-custom">Custom Bot</option>
+            <option value="bot-setup">Custom Bot + Setup</option>
+          </optgroup>
           <option value="custom">Custom / Other</option>
         </select>
       </div>
       <div class="form-group">
         <label for="message">Tell Me About Your Project</label>
-        <textarea id="message" name="message" placeholder="Describe your game, the mood you're going for, reference tracks if any, deadline..." required></textarea>
+        <textarea id="message" name="message" placeholder="For music: describe your game, the mood, reference tracks, deadline. For bots: describe your community, the features you need, your server size." required></textarea>
       </div>
       <button type="submit" class="btn btn-solid form-submit">Send Commission Request</button>
     </form>
@@ -503,9 +748,10 @@
 
   <footer>
     <img src="KumihoVectorTrans.png" alt="Kumiho" style="height:44px; width:auto;" />
-    <div class="footer-copy">2026 Kumiho. All rights reserved.</div>
+    <div class="footer-copy">&copy; 2026 Kumiho. All rights reserved.</div>
     <div class="footer-links">
       <a href="https://soundcloud.com/kumihoart" target="_blank">SoundCloud</a>
+      <a href="https://github.com/KumihoArts" target="_blank">GitHub</a>
       <a href="#contact">Commission</a>
     </div>
   </footer>
@@ -525,6 +771,13 @@
       reveals.forEach(function(el) { observer.observe(el); });
     } else {
       reveals.forEach(function(el) { el.classList.add('visible'); });
+    }
+
+    function switchTab(name, btn) {
+      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.getElementById('tab-' + name).classList.add('active');
+      btn.classList.add('active');
     }
   </script>
 </body>
