@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kumiho — Music &amp; Discord Bots</title>
+  <title>Kumiho — Music, Sound Design &amp; Discord Bots</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -419,17 +419,19 @@
       <li><a href="#portfolio">Music</a></li>
       <li><a href="#bots">Bots</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#sounddesign">Sound Design</a></li>
       <li><a href="#contact">Commission</a></li>
     </ul>
   </nav>
 
   <div id="hero">
     <img src="KumihoVectorTrans.png" alt="Kumiho Logo" class="hero-logo" />
-    <p class="hero-eyebrow">Game Music &middot; Discord Bots &middot; Creative Dev</p>
+    <p class="hero-eyebrow">Game Music &middot; Sound Design &middot; Discord Bots &middot; Creative Dev</p>
     <h1 class="hero-title">KU<span>MI</span>HO</h1>
     <p class="hero-subtitle">Atmospheric scores and custom Discord bots for indie creators.</p>
     <div class="hero-services">
       <div class="hero-service-pill"><span>//</span> Game Music</div>
+      <div class="hero-service-pill"><span>//</span> Sound Design</div>
       <div class="hero-service-pill"><span>//</span> Discord Bots</div>
       <div class="hero-service-pill"><span>//</span> Visual Novel Dev</div>
     </div>
@@ -703,6 +705,70 @@
 
   <hr class="section-divider" />
 
+  <section id="sounddesign">
+    <p class="section-label">Sound Design</p>
+    <h2 class="section-title">SFX &amp; Audio for <em>Indie</em> Projects</h2>
+    <div class="bots-intro reveal">
+      <p>Original sound effects, ambient layers, and full audio packages for indie visual novels, short animations, and games. Every sound is synthesised or crafted from scratch — no royalty-free filler.</p>
+      <p>Specialising in atmospheric SFX that fits the tone of VNs and adult indie titles. Tight sync work, clean stems, and straightforward delivery.</p>
+    </div>
+
+    <div class="bot-grid">
+
+      <div class="bot-card reveal">
+        <div class="bot-card-header">
+          <div class="bot-name">Per Scene / Clip</div>
+          <div class="bot-tag">SFX</div>
+        </div>
+        <p class="bot-desc">Ideal for short animations, cutscenes, or individual VN moments that need custom sound.</p>
+        <ul class="bot-features">
+          <li>Simple scene (1–2 sound types) — €15–€20</li>
+          <li>Complex scene with layered SFX &amp; sync — €25–€40</li>
+          <li>Stems delivered individually</li>
+          <li>WAV delivery</li>
+        </ul>
+      </div>
+
+      <div class="bot-card reveal" style="transition-delay:0.1s">
+        <div class="bot-card-header">
+          <div class="bot-name">SFX Packs</div>
+          <div class="bot-tag">SFX</div>
+        </div>
+        <p class="bot-desc">Bulk sound assets for games needing UI sounds, footsteps, ambience loops, and more.</p>
+        <ul class="bot-features">
+          <li>Individual asset — €3–€10 depending on complexity</li>
+          <li>Small pack (5–10 sounds) — €25–€40</li>
+          <li>Medium pack (10–25 sounds) — €50–€80</li>
+          <li>Large pack (25+ sounds) — €100+</li>
+        </ul>
+      </div>
+
+      <div class="bot-card reveal" style="transition-delay:0.2s">
+        <div class="bot-card-header">
+          <div class="bot-name">Full Game Audio</div>
+          <div class="bot-tag live">Bundle</div>
+        </div>
+        <p class="bot-desc">Complete SFX + ambience package for a full VN or small game. Quoted per project.</p>
+        <ul class="bot-features">
+          <li>Full SFX suite for all scenes</li>
+          <li>Ambient loops included</li>
+          <li>Frame-accurate sync on request</li>
+          <li>Can bundle with music score</li>
+          <li>€100–€300+ depending on scope</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="railway-note reveal" style="margin-top: 2rem;">
+      <strong style="color: var(--text);">Returning client discount:</strong> 10% off automatically applied on all projects after your first. &nbsp;·&nbsp;
+      <strong style="color: var(--text);">Commercial premium:</strong> 20–30% surcharge applies for paid/commercial releases. &nbsp;·&nbsp;
+      <a href="sounddesign-rates.html" target="_blank" style="color: var(--green);">View full rate sheet →</a>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
   <section id="contact">
     <p class="section-label">Commission</p>
     <h2 class="section-title">Let's Make <em>Something</em></h2>
@@ -722,6 +788,11 @@
         <label for="project-type">Project Type</label>
         <select id="project-type" name="project_type">
           <option value="">Select a service...</option>
+          <optgroup label="Sound Design">
+            <option value="sfx-scene">SFX — Scene / Clip</option>
+            <option value="sfx-pack">SFX — Asset Pack</option>
+            <option value="sfx-full">SFX — Full Game Audio</option>
+          </optgroup>
           <optgroup label="Music">
             <option value="single">Single Track</option>
             <option value="soundtrack">Full Soundtrack Pack</option>
@@ -737,7 +808,7 @@
       </div>
       <div class="form-group">
         <label for="message">Tell Me About Your Project</label>
-        <textarea id="message" name="message" placeholder="For music: describe your game, the mood, reference tracks, deadline. For bots: describe your community, the features you need, your server size." required></textarea>
+        <textarea id="message" name="message" placeholder="For music/SFX: describe your game, the mood, reference tracks, deadline. For bots: describe your community, the features you need, your server size." required></textarea>
       </div>
       <button type="submit" class="btn btn-solid form-submit">Send Commission Request</button>
     </form>
