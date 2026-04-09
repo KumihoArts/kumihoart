@@ -20,9 +20,7 @@
       --text: #d4cfc6;
       --text-dim: #9a9590;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -33,8 +31,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    /* subtle grid texture */
     body::before {
       content: '';
       position: fixed;
@@ -46,8 +42,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* radial glow top */
     body::after {
       content: '';
       position: fixed;
@@ -60,7 +54,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .wrapper {
       position: relative;
       z-index: 1;
@@ -68,14 +61,11 @@
       margin: 0 auto;
       padding: 5rem 2rem 4rem;
     }
-
-    /* HEADER */
     header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
       animation: fadeDown 0.7s ease both;
     }
-
     .wordmark {
       font-family: 'Space Mono', monospace;
       font-size: 0.65rem;
@@ -88,15 +78,12 @@
       justify-content: center;
       gap: 1rem;
     }
-
-    .wordmark::before,
-    .wordmark::after {
+    .wordmark::before, .wordmark::after {
       content: '';
       width: 40px;
       height: 1px;
       background: var(--green-dim);
     }
-
     h1 {
       font-family: 'Space Mono', monospace;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -106,11 +93,7 @@
       line-height: 1.1;
       margin-bottom: 1rem;
     }
-
-    h1 span {
-      color: var(--green);
-    }
-
+    h1 span { color: var(--green); }
     .subtitle {
       color: var(--text-dim);
       font-size: 0.85rem;
@@ -118,8 +101,44 @@
       max-width: 480px;
       margin: 0 auto;
     }
-
-    /* SECTION LABEL */
+    .currency-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding: 0.9rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      flex-wrap: wrap;
+      animation: fadeDown 0.7s ease 0.1s both;
+    }
+    .currency-bar-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .currency-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .currency-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.9rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .currency-btn:hover { border-color: var(--green-dim); color: var(--text); }
+    .currency-btn.active { background: var(--green-glow); border-color: var(--green); color: var(--green); }
+    .rate-status { font-size: 0.68rem; color: var(--text-dim); margin-left: auto; white-space: nowrap; }
+    .rate-status.loading { color: var(--green-dim); }
+    .rate-status.error   { color: #e07070; }
     .section-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
@@ -131,22 +150,13 @@
       align-items: center;
       gap: 0.75rem;
     }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* CARDS GRID */
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 1.25rem;
       margin-bottom: 1.25rem;
     }
-
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -157,7 +167,6 @@
       transition: border-color 0.3s, box-shadow 0.3s;
       animation: fadeUp 0.6s ease both;
     }
-
     .card::before {
       content: '';
       position: absolute;
@@ -167,16 +176,8 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-
-    .card:hover {
-      border-color: rgba(29,196,146,0.35);
-      box-shadow: 0 0 24px rgba(29,196,146,0.07);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
+    .card:hover { border-color: rgba(29,196,146,0.35); box-shadow: 0 0 24px rgba(29,196,146,0.07); }
+    .card:hover::before { opacity: 1; }
     .card-title {
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
@@ -188,12 +189,7 @@
       align-items: center;
       gap: 0.6rem;
     }
-
-    .card-title .icon {
-      color: var(--green);
-      font-size: 0.9rem;
-    }
-
+    .card-title .icon { color: var(--green); font-size: 0.9rem; }
     .rate-row {
       display: flex;
       justify-content: space-between;
@@ -202,18 +198,8 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
       gap: 1rem;
     }
-
-    .rate-row:last-child {
-      border-bottom: none;
-    }
-
-    .rate-desc {
-      color: var(--text-dim);
-      font-size: 0.8rem;
-      line-height: 1.4;
-      flex: 1;
-    }
-
+    .rate-row:last-child { border-bottom: none; }
+    .rate-desc { color: var(--text-dim); font-size: 0.8rem; line-height: 1.4; flex: 1; }
     .rate-price {
       font-family: 'Space Mono', monospace;
       font-size: 0.82rem;
@@ -221,13 +207,7 @@
       color: var(--green);
       white-space: nowrap;
     }
-
-    /* FULL WIDTH CARD */
-    .card-wide {
-      grid-column: 1 / -1;
-    }
-
-    /* POLICY SECTION */
+    .card-wide { grid-column: 1 / -1; }
     .policy {
       margin-top: 2.5rem;
       background: var(--surface);
@@ -236,21 +216,18 @@
       padding: 1.6rem 1.8rem;
       animation: fadeUp 0.6s ease 0.4s both;
     }
-
     .policy-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.2rem;
       margin-top: 1rem;
     }
-
     .policy-item {
       padding: 1rem 1.1rem;
       background: rgba(29,196,146,0.04);
       border: 1px solid rgba(29,196,146,0.1);
       border-radius: 3px;
     }
-
     .policy-item-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
@@ -259,20 +236,8 @@
       color: var(--green);
       margin-bottom: 0.4rem;
     }
-
-    .policy-item p {
-      color: var(--text-dim);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 3.5rem;
-      text-align: center;
-      animation: fadeUp 0.6s ease 0.5s both;
-    }
-
+    .policy-item p { color: var(--text-dim); font-size: 0.8rem; line-height: 1.5; }
+    footer { margin-top: 3.5rem; text-align: center; animation: fadeUp 0.6s ease 0.5s both; }
     .contact-line {
       font-family: 'Space Mono', monospace;
       font-size: 0.65rem;
@@ -281,25 +246,9 @@
       color: var(--text-dim);
       margin-bottom: 0.5rem;
     }
-
-    .contact-line a {
-      color: var(--green);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .contact-line a:hover {
-      opacity: 0.75;
-    }
-
-    .fine-print {
-      margin-top: 1.5rem;
-      font-size: 0.72rem;
-      color: rgba(154,149,144,0.5);
-      letter-spacing: 0.04em;
-    }
-
-    /* print button */
+    .contact-line a { color: var(--green); text-decoration: none; transition: opacity 0.2s; }
+    .contact-line a:hover { opacity: 0.75; }
+    .fine-print { margin-top: 1.5rem; font-size: 0.72rem; color: rgba(154,149,144,0.5); letter-spacing: 0.04em; }
     .btn-print {
       display: inline-flex;
       align-items: center;
@@ -317,42 +266,25 @@
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
     }
-
-    .btn-print:hover {
-      background: var(--green-glow);
-      border-color: var(--green);
-    }
-
-    /* ANIMATIONS */
+    .btn-print:hover { background: var(--green-glow); border-color: var(--green); }
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .card:nth-child(1) { animation-delay: 0.1s; }
     .card:nth-child(2) { animation-delay: 0.18s; }
     .card:nth-child(3) { animation-delay: 0.26s; }
     .card:nth-child(4) { animation-delay: 0.34s; }
     .card:nth-child(5) { animation-delay: 0.42s; }
-
-    /* PRINT STYLES */
     @media print {
       body::before, body::after { display: none; }
       body { background: #fff; color: #111; font-size: 12px; }
-      .btn-print { display: none; }
-      :root {
-        --bg: #fff;
-        --surface: #f5f5f5;
-        --border: #ddd;
-        --green: #0a7a56;
-        --text: #111;
-        --text-dim: #555;
-      }
+      .btn-print, .currency-bar { display: none; }
+      :root { --bg: #fff; --surface: #f5f5f5; --border: #ddd; --green: #0a7a56; --text: #111; --text-dim: #555; }
       .card, .policy { box-shadow: none; break-inside: avoid; }
       .wrapper { padding: 1rem; }
     }
@@ -367,92 +299,98 @@
       <p class="subtitle">Original SFX, ambient loops, and full game audio for indie VNs and short-form animation.</p>
     </header>
 
+    <div class="currency-bar">
+      <span class="currency-bar-label">Display prices in:</span>
+      <div class="currency-btns">
+        <button class="currency-btn active" onclick="setCurrency('EUR', this)">&#8364; EUR</button>
+        <button class="currency-btn" onclick="setCurrency('USD', this)">$ USD</button>
+        <button class="currency-btn" onclick="setCurrency('GBP', this)">&#163; GBP</button>
+        <button class="currency-btn" onclick="setCurrency('AUD', this)">A$ AUD</button>
+        <button class="currency-btn" onclick="setCurrency('CAD', this)">C$ CAD</button>
+      </div>
+      <span class="rate-status loading" id="rate-status">Fetching live rates&#8230;</span>
+    </div>
+
     <div class="section-label">Services &amp; Pricing</div>
 
     <div class="grid">
 
-      <!-- Scene / Clip -->
       <div class="card">
-        <div class="card-title"><span class="icon">▸</span> Per Scene / Short Clip</div>
+        <div class="card-title"><span class="icon">&#9654;</span> Per Scene / Short Clip</div>
         <div class="rate-row">
-          <span class="rate-desc">Simple scene — 1–2 sound types (e.g. ambient + single event)</span>
-          <span class="rate-price">€15–€20</span>
+          <span class="rate-desc">Simple scene &mdash; 1&ndash;2 sound types (e.g. ambient + single event)</span>
+          <span class="rate-price" id="price-scene-simple">&#8364;15&ndash;&#8364;20</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Complex scene — multiple layered SFX with frame-accurate sync</span>
-          <span class="rate-price">€25–€40</span>
+          <span class="rate-desc">Complex scene &mdash; multiple layered SFX with frame-accurate sync</span>
+          <span class="rate-price" id="price-scene-complex">&#8364;25&ndash;&#8364;40</span>
         </div>
       </div>
 
-      <!-- Individual SFX -->
       <div class="card">
-        <div class="card-title"><span class="icon">▸</span> Per Individual SFX Asset</div>
+        <div class="card-title"><span class="icon">&#9654;</span> Per Individual SFX Asset</div>
         <div class="rate-row">
-          <span class="rate-desc">Basic — single layer, minimal processing</span>
-          <span class="rate-price">€3–€5</span>
+          <span class="rate-desc">Basic &mdash; single layer, minimal processing</span>
+          <span class="rate-price" id="price-asset-basic">&#8364;3&ndash;&#8364;5</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Complex — layered, synthesized from scratch, heavily processed</span>
-          <span class="rate-price">€6–€10</span>
+          <span class="rate-desc">Complex &mdash; layered, synthesized from scratch, heavily processed</span>
+          <span class="rate-price" id="price-asset-complex">&#8364;6&ndash;&#8364;10</span>
         </div>
       </div>
 
-      <!-- SFX Packs -->
       <div class="card">
-        <div class="card-title"><span class="icon">▸</span> SFX Packs</div>
+        <div class="card-title"><span class="icon">&#9654;</span> SFX Packs</div>
         <div class="rate-row">
-          <span class="rate-desc">Small pack — 5–10 sounds (e.g. UI, footsteps)</span>
-          <span class="rate-price">€25–€40</span>
+          <span class="rate-desc">Small pack &mdash; 5&ndash;10 sounds (e.g. UI, footsteps)</span>
+          <span class="rate-price" id="price-pack-small">&#8364;25&ndash;&#8364;40</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Medium pack — 10–25 sounds</span>
-          <span class="rate-price">€50–€80</span>
+          <span class="rate-desc">Medium pack &mdash; 10&ndash;25 sounds</span>
+          <span class="rate-price" id="price-pack-medium">&#8364;50&ndash;&#8364;80</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Large pack — 25+ sounds</span>
-          <span class="rate-price">€100+</span>
+          <span class="rate-desc">Large pack &mdash; 25+ sounds</span>
+          <span class="rate-price" id="price-pack-large">&#8364;100+</span>
         </div>
       </div>
 
-      <!-- Ambient / Music -->
       <div class="card">
-        <div class="card-title"><span class="icon">▸</span> Ambient Loops &amp; Background Music</div>
+        <div class="card-title"><span class="icon">&#9654;</span> Ambient Loops &amp; Background Music</div>
         <div class="rate-row">
-          <span class="rate-desc">Short loop — under 1 minute</span>
-          <span class="rate-price">€15–€25</span>
+          <span class="rate-desc">Short loop &mdash; under 1 minute</span>
+          <span class="rate-price" id="price-loop">&#8364;15&ndash;&#8364;25</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Full track — 1–3 minutes</span>
-          <span class="rate-price">€30–€60</span>
+          <span class="rate-desc">Full track &mdash; 1&ndash;3 minutes</span>
+          <span class="rate-price" id="price-track">&#8364;30&ndash;&#8364;60</span>
         </div>
       </div>
 
-      <!-- Full Game Audio -->
       <div class="card card-wide">
-        <div class="card-title"><span class="icon">▸</span> Full Game Audio</div>
+        <div class="card-title"><span class="icon">&#9654;</span> Full Game Audio</div>
         <div class="rate-row">
-          <span class="rate-desc">Complete SFX + ambience package for a full VN or small game — quoted per project based on scope</span>
-          <span class="rate-price">€100–€300+</span>
+          <span class="rate-desc">Complete SFX + ambience package for a full VN or small game &mdash; quoted per project based on scope</span>
+          <span class="rate-price" id="price-fullgame">&#8364;100&ndash;&#8364;300+</span>
         </div>
         <div class="rate-row">
-          <span class="rate-desc">Bundled with a music score commission — combined discount available, <a href="mailto:kumiho.py@gmail.com" style="color:var(--green); text-decoration:none;">get in touch</a> to discuss</span>
+          <span class="rate-desc">Bundled with a music score commission &mdash; combined discount available, <a href="mailto:kumiho.py@gmail.com" style="color:var(--green);text-decoration:none;">get in touch</a> to discuss</span>
           <span class="rate-price">Ask</span>
         </div>
       </div>
 
     </div>
 
-    <!-- Policy -->
     <div class="policy">
       <div class="section-label">Terms &amp; Notes</div>
       <div class="policy-grid">
         <div class="policy-item">
           <div class="policy-item-label">Revisions</div>
-          <p>One round of revisions included. Additional rounds charged at €10 each.</p>
+          <p>One round of revisions included. Additional rounds charged at &euro;10 each.</p>
         </div>
         <div class="policy-item">
           <div class="policy-item-label">Commercial Premium</div>
-          <p>Projects released commercially (paid releases) carry a 20–30% surcharge on top of base rates.</p>
+          <p>Projects released commercially carry a 20&ndash;30% surcharge on top of base rates.</p>
         </div>
         <div class="policy-item">
           <div class="policy-item-label">Delivery Format</div>
@@ -470,5 +408,77 @@
     </div>
 
     <footer>
-      <p class="contact-line">Enquiries → <a href="/cdn-cgi/l/email-protection#f9928c94909196d78980b99e94989095d79a9694"><span class="__cf_email__" data-cfemail="bfd4cad2d6d7d091cfc6ffd8d2ded6d391dcd0d2">[email&#160;protected]</span></a> &nbsp;·&nbsp; Discord: <span style="color:var(--green)">sly97</span></p>
-      <button class="btn-print" onclick="window.print()">�쇄 Print / Save as PDF</button>
+      <p class="contact-line">Enquiries &rarr; <a href="mailto:kumiho.py@gmail.com">kumiho.py@gmail.com</a> &nbsp;&middot;&nbsp; Discord: <span style="color:var(--green)">sly97</span></p>
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+      <p class="fine-print">All base prices in EUR. Converted prices are approximate. Rates subject to change. Last updated 2026.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    var priceData = [
+      { id: 'price-scene-simple',  low: 15,  high: 20  },
+      { id: 'price-scene-complex', low: 25,  high: 40  },
+      { id: 'price-asset-basic',   low: 3,   high: 5   },
+      { id: 'price-asset-complex', low: 6,   high: 10  },
+      { id: 'price-pack-small',    low: 25,  high: 40  },
+      { id: 'price-pack-medium',   low: 50,  high: 80  },
+      { id: 'price-pack-large',    low: 100, high: null },
+      { id: 'price-loop',          low: 15,  high: 25  },
+      { id: 'price-track',         low: 30,  high: 60  },
+      { id: 'price-fullgame',      low: 100, high: 300 }
+    ];
+
+    var symbols = { EUR: '\u20ac', USD: '$', GBP: '\u00a3', AUD: 'A$', CAD: 'C$' };
+    var rates = { EUR: 1 };
+    var currentCurrency = 'EUR';
+
+    function fetchRates() {
+      var status = document.getElementById('rate-status');
+      fetch('https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,AUD,CAD')
+        .then(function(res) {
+          if (!res.ok) throw new Error('failed');
+          return res.json();
+        })
+        .then(function(data) {
+          rates = { EUR: 1 };
+          Object.keys(data.rates).forEach(function(k) { rates[k] = data.rates[k]; });
+          var d = new Date(data.date);
+          status.className = 'rate-status';
+          status.textContent = 'Rates as of ' + d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+          renderPrices();
+        })
+        .catch(function() {
+          status.className = 'rate-status error';
+          status.textContent = 'Live rates unavailable \u2014 showing EUR';
+        });
+    }
+
+    function convert(eur) {
+      return Math.ceil(eur * (rates[currentCurrency] || 1));
+    }
+
+    function formatPrice(low, high, sym) {
+      if (high === null) return sym + convert(low) + '+';
+      return sym + convert(low) + '\u2013' + sym + convert(high);
+    }
+
+    function renderPrices() {
+      var sym = symbols[currentCurrency] || '\u20ac';
+      priceData.forEach(function(p) {
+        var el = document.getElementById(p.id);
+        if (el) el.textContent = formatPrice(p.low, p.high, sym);
+      });
+    }
+
+    function setCurrency(code, btn) {
+      currentCurrency = code;
+      document.querySelectorAll('.currency-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderPrices();
+    }
+
+    fetchRates();
+  </script>
+</body>
+</html>
