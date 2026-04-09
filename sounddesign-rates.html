@@ -435,7 +435,7 @@
 
     function fetchRates() {
       var status = document.getElementById('rate-status');
-      fetch('https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,AUD,CAD')
+      fetch('https://api.frankfurter.dev/v1/latest?from=EUR&to=USD,GBP,AUD,CAD')
         .then(function(res) {
           if (!res.ok) throw new Error('failed');
           return res.json();
