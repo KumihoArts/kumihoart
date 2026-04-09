@@ -18,7 +18,7 @@
       --green-dim: #138a65;
       --green-glow: rgba(29,196,146,0.12);
       --text: #d4cfc6;
-      --text-dim: #9a9590;
+      --text-dim: #c8c4be;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -96,7 +96,7 @@
     h1 span { color: var(--green); }
     .subtitle {
       color: var(--text-dim);
-      font-size: 0.85rem;
+      font-size: 1rem;
       letter-spacing: 0.05em;
       max-width: 480px;
       margin: 0 auto;
@@ -120,6 +120,7 @@
       text-transform: uppercase;
       color: var(--text-dim);
       white-space: nowrap;
+      text-shadow: 0 0 8px rgba(255,255,255,0.15), 0 1px 2px rgba(0,0,0,0.8);
     }
     .currency-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .currency-btn {
@@ -136,7 +137,7 @@
     }
     .currency-btn:hover { border-color: var(--green-dim); color: var(--text); }
     .currency-btn.active { background: var(--green-glow); border-color: var(--green); color: var(--green); }
-    .rate-status { font-size: 0.68rem; color: var(--text-dim); margin-left: auto; white-space: nowrap; }
+    .rate-status { font-size: 0.8rem; color: var(--text-dim); margin-left: auto; white-space: nowrap; }
     .rate-status.loading { color: var(--green-dim); }
     .rate-status.error   { color: #e07070; }
     .section-label {
@@ -199,7 +200,7 @@
       gap: 1rem;
     }
     .rate-row:last-child { border-bottom: none; }
-    .rate-desc { color: var(--text-dim); font-size: 0.8rem; line-height: 1.4; flex: 1; }
+    .rate-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.4; flex: 1; }
     .rate-price {
       font-family: 'Space Mono', monospace;
       font-size: 0.82rem;
@@ -236,7 +237,7 @@
       color: var(--green);
       margin-bottom: 0.4rem;
     }
-    .policy-item p { color: var(--text-dim); font-size: 0.8rem; line-height: 1.5; }
+    .policy-item p { color: var(--text-dim); font-size: 0.93rem; line-height: 1.5; }
     footer { margin-top: 3.5rem; text-align: center; animation: fadeUp 0.6s ease 0.5s both; }
     .contact-line {
       font-family: 'Space Mono', monospace;
@@ -248,7 +249,7 @@
     }
     .contact-line a { color: var(--green); text-decoration: none; transition: opacity 0.2s; }
     .contact-line a:hover { opacity: 0.75; }
-    .fine-print { margin-top: 1.5rem; font-size: 0.72rem; color: rgba(154,149,144,0.5); letter-spacing: 0.04em; }
+    .fine-print { margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-dim); letter-spacing: 0.04em; }
     .btn-print {
       display: inline-flex;
       align-items: center;
