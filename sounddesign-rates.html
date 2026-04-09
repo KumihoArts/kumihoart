@@ -7,6 +7,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/opendyslexic" />
+  <style>
+    body.dyslexia-mode,
+    body.dyslexia-mode button { font-family: 'OpenDyslexic', sans-serif !important; }
+    body.dyslexia-mode {
+      font-size: 17px !important;
+      line-height: 2 !important;
+      letter-spacing: 0.05em !important;
+      word-spacing: 0.15em !important;
+    }
+    body.dyslexia-mode h1,
+    body.dyslexia-mode .card-title,
+    body.dyslexia-mode .section-label,
+    body.dyslexia-mode .policy-item-label,
+    body.dyslexia-mode .wordmark { font-family: 'OpenDyslexic', sans-serif !important; }
+    .a11y-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--text-dim);
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .a11y-toggle:hover { border-color: var(--green-dim); color: var(--text); }
+    .a11y-toggle.active { border-color: var(--green); color: var(--green); background: var(--green-glow); }
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -416,6 +455,11 @@
 
   </div>
 
+  <button class="a11y-toggle" id="dyslexia-toggle" title="Toggle dyslexia-friendly font">
+    <span>Aa</span>
+    <span class="a11y-label">Dyslexia font</span>
+  </button>
+
   <script>
     var priceData = [
       { id: 'price-scene-simple',  low: 15,  high: 20  },
@@ -480,6 +524,21 @@
     }
 
     fetchRates();
+
+    // Dyslexia mode
+    var dyslexiaBtn = document.getElementById('dyslexia-toggle');
+    var dyslexiaActive = localStorage.getItem('dyslexia') === '1';
+    function applyDyslexia(active) {
+      document.body.classList.toggle('dyslexia-mode', active);
+      dyslexiaBtn.classList.toggle('active', active);
+      dyslexiaBtn.querySelector('.a11y-label').textContent = active ? 'Standard font' : 'Dyslexia font';
+      localStorage.setItem('dyslexia', active ? '1' : '0');
+    }
+    applyDyslexia(dyslexiaActive);
+    dyslexiaBtn.addEventListener('click', function() {
+      dyslexiaActive = !dyslexiaActive;
+      applyDyslexia(dyslexiaActive);
+    });
   </script>
 </body>
 </html>
